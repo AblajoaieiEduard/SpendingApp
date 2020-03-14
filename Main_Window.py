@@ -61,7 +61,9 @@ class Ui_MainWindow(object):
                 self.SpendingsTable.setItem(self.SpendingsTable.rowCount() - 1, 1, QTableWidgetItem(chel.get_categorie()))
                 self.SpendingsTable.setItem(self.SpendingsTable.rowCount() - 1, 2, QTableWidgetItem(chel.get_descriere()))
             self.LabelBudget.setText(QtCore.QCoreApplication.translate("MainWindow", "Current Budget: " + "\n" + self.__serv_cat.situatie_generala()))
-            
+            self.CategoryBox.clear()
+            for cat in self.__serv_cat.get_all():
+                self.CategoryBox.addItem(str(cat))
         except Exception as ex:
             win = QMessageBox()
             win.setWindowTitle("Error")
